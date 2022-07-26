@@ -1,15 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <router-view></router-view>
+  <div class="overlay" ref="overlay" tabindex="0" @keydown="pressing" @keyup="stopPressing"></div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  mounted(){
+    this.$refs.overlay.focus()
+  },
+  methods:{
+    pressing(event){
+      if(event.key !== 'Tab'){
+        this.$store.commit('setPressedButton', event.key)
+      }
+    },
+    stopPressing(){
+      this.$store.commit('setPressedButton', '')
+    }
   }
 }
 </script>
@@ -22,5 +30,14 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.overlay{
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  outline: none;
 }
 </style>
