@@ -1,23 +1,17 @@
 <template>
   <router-view></router-view>
-  <div class="overlay" ref="overlay" tabindex="0" @keydown="pressing" @keyup="stopPressing"></div>
+  <command-overlay></command-overlay>
+  <div class="background"/>
 </template>
 
 <script>
+
+import CommandOverlay from './components/config/CommandOverlay.vue'
+
 export default {
   name: 'App',
-  mounted(){
-    this.$refs.overlay.focus()
-  },
-  methods:{
-    pressing(event){
-      if(event.key !== 'Tab'){
-        this.$store.commit('setPressedButton', event.key)
-      }
-    },
-    stopPressing(){
-      this.$store.commit('setPressedButton', '')
-    }
+  components: {
+    CommandOverlay
   }
 }
 </script>
@@ -38,6 +32,18 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  outline: none;
+  /* outline: none; */
+}
+.background{
+  background: url('./assets/Background.png');
+  background-position: bottom;
+  background-repeat-y: no-repeat;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #7693B3;
 }
 </style>
