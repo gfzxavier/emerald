@@ -1,13 +1,13 @@
 <template>
   <div class="knight">
     <div v-if="action === 'stand'" class="knight__block knight__block--stand">
-      <img src="../../assets/characters/knight/_Idle.png" class="knight__stand animate">
+      <img src="../../assets/characters/knight/_Idle.png" class="knight__stand">
     </div>
     <div v-if="action === 'running'" class="knight__block knight__block--running">
-      <img src="../../assets/characters/knight/_Run.png" class="knight__running animate">
+      <img src="../../assets/characters/knight/_Run.png" class="knight__running">
     </div>
     <div v-if="action === 'attacking'" class="knight__block knight__block--attacking">
-      <img src="../../assets/characters/knight/_Attack.png" class="knight__attacking animate">
+      <img src="../../assets/characters/knight/_Attack.png" class="knight__attacking">
     </div>
   </div>
 </template>
@@ -84,8 +84,7 @@ export default {
         position: relative;
         top: -232px;
         left: -300px;
-        animation: animate .26s steps(4) infinite;
-        animation: animate .15s steps(4) infinite;
+        animation: animate .18s steps(4) infinite;
         height: $character-size;
         image-rendering: pixelated;
       }
