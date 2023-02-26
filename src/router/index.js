@@ -5,8 +5,8 @@ export default createRouter({
   routes: [
     { 
       path: '/',
-      name: 'MenuPrincipal',
-      component: () => import('@/views/MenuPrincipal.vue')
+      name: 'MainMenu',
+      component: () => import('@/views/MainMenu.vue')
     },
   ]
 })  
