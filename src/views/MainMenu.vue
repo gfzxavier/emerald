@@ -19,7 +19,7 @@ export default {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: url('../assets/main-menu-background.gif');
+  background: url('../assets/img/main-menu-background.gif');
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
