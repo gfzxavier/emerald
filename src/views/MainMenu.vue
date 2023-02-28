@@ -16,14 +16,14 @@ export default {
 
 <style scoped>
 .main-menu {
+  position: fixed;
+  width: 100%;
+  height: 100%;
   background: url('../assets/main-menu-background.gif');
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100%;
-  height: 100%;
-  position: fixed;
   image-rendering: pixelated;
-  box-shadow: inset -130px 155px 264px #000; 
+  box-shadow: inset -130px 155px 264px #000;
 }
 </style>
