@@ -2,6 +2,7 @@
 
 import { app, protocol, BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
+import path from 'path'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 const isDevelopment = process.env.NODE_ENV !== 'production'
 
@@ -22,7 +23,8 @@ async function createWindow() {
       nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
       contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION
     },
-    resizable: false
+    resizable: false,
+    frame: false
   })
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
@@ -55,6 +57,26 @@ app.on('activate', () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', async () => {
+
+  function registerLocalVideoProtocol () {
+    protocol.registerFileProtocol('local-audio', (request, callback) => {
+      const url = request.url.replace(/^local-audio:\/\//, '')
+      // Decode URL to prevent errors when loading filenames with UTF-8 chars or chars like "#"
+      const decodedUrl = decodeURI(url) // Needed in case URL contains spaces
+      try {
+        // eslint-disable-next-line no-undef
+        return callback(path.join(__static, decodedUrl))
+      } catch (error) {
+        console.error(
+          'ERROR: registerLocalVideoProtocol: Could not get file path:',
+          error
+        )
+      }
+    })
+  }
+
+  registerLocalVideoProtocol()
+
   if (isDevelopment && !process.env.IS_TEST) {
     // Install Vue Devtools
     try {
