@@ -1,11 +1,11 @@
 <template>
   <div class="main-menu">
-    <main-menu-title />
+    <MainMenuTitle />
   </div>
 </template>
 
 <script>
-import MainMenuTitle from '../components/MainMenuTitle.vue'
+import MainMenuTitle from '../components/MainMenu/MainMenuTitle.vue'
 export default {
   name: 'MainMenu',
   components: {
