@@ -1,17 +1,21 @@
 <template>
   <div class="main-menu-title">
-    <img src="../assets/img/logo.png" class="main-menu-title__logo">
+    <img src="../../assets/img/logo.png" class="main-menu-title__logo">
 
     <main-menu-options />
+
+    <soundtrack song="main-menu" />
   </div>
 </template>
 
 <script>
 import MainMenuOptions from './MainMenuOptions.vue'
+import Soundtrack from '../UI/Soundtrack.vue'
 export default {
   name: 'MainMenuTitle',
   components: {
-    MainMenuOptions
+    MainMenuOptions,
+    Soundtrack
   }
 }
 </script>
