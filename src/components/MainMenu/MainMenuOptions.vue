@@ -28,20 +28,31 @@ export default {
       ]
     }
   },
+  computed: {
+    currentActiveItem() {
+      return this.options.find((element) => element.active)
+    },
+    currentActiveItemIndex() {
+      return this.options.findIndex((element) => element.active)
+    }
+  },
   watch:{
     '$store.getters.getPressedButton': function(command) {
 
-      let currentActiveItem = this.options.findIndex((element) => element.active)
-
       if(command == 'arrowdown') {
-        if(currentActiveItem < this.options.length - 1){
-          this.options[currentActiveItem].active = false
-          this.options[currentActiveItem + 1].active = true
+        if(this.currentActiveItemIndex < this.options.length - 1){
+          this.options[this.currentActiveItemIndex].active = false
+          this.options[this.currentActiveItemIndex + 1].active = true
         }
       } else if (command == 'arrowup') {
-        if(currentActiveItem != 0){
-          this.options[currentActiveItem].active = false
-          this.options[currentActiveItem - 1].active = true
+        if(this.currentActiveItemIndex != 0){
+          this.options[this.currentActiveItemIndex].active = false
+          this.options[this.currentActiveItemIndex - 1].active = true
+        }
+      } else if (command == 'enter') {
+        switch(this.currentActiveItem.text) {
+          case 'Novo Jogo':
+            this.$router.push('/LevelOne')
         }
       }
     }
