@@ -1,13 +1,13 @@
 <template>
   <div class="knight">
     <div v-if="action === 'stand'" class="knight__block knight__block--stand">
-      <img src="../../assets/characters/knight/_Idle.png" class="knight__stand">
+      <img src="../../assets/img/Characters/knight/_Idle.png" class="knight__stand">
     </div>
     <div v-if="action === 'running'" class="knight__block knight__block--running">
-      <img src="../../assets/characters/knight/_Run.png" class="knight__running">
+      <img src="../../assets/img/Characters/knight/_Run.png" class="knight__running">
     </div>
     <div v-if="action === 'attacking'" class="knight__block knight__block--attacking">
-      <img src="../../assets/characters/knight/_Attack.png" class="knight__attacking">
+      <img src="../../assets/img/Characters/knight/_Attack.png" class="knight__attacking">
     </div>
   </div>
 </template>
