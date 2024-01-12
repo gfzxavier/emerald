@@ -8,5 +8,10 @@ export default createRouter({
       name: 'MainMenu',
       component: () => import('@/views/MainMenu.vue')
     },
+    { 
+      path: '/LevelOne',
+      name: 'LevelOne',
+      component: () => import('@/views/LevelOne.vue')
+    },
   ]
 })  
