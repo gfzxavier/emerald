@@ -4,17 +4,23 @@ import { createStore } from 'vuex'
 export default createStore({
   state () {
     return {
-      button: ''
+      button: '',
+      timesPressed: 0,
+      isPressing: false
     }
   },
   mutations: {
-    setPressedButton (state, button) {
+    setPressedButton(state, button) {
       state.button = button
-    }
+
+      setTimeout(()=> {
+        state.button = ''
+      }, 180)
+    },
   },
   getters:{
     getPressedButton(state){
       return state.button
-    }
+    },
   }
 })
