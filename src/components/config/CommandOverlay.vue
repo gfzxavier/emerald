@@ -27,16 +27,6 @@ export default {
     pressing(event){
       if(event.key !== 'Tab'){
 
-        // console.log(this.getDebouncerTimeLeft())
-
-        // if(this.getDebouncerTimeLeft() <= 0 ) {
-        //   this.debouncer.start = Date.now()
-  
-        //   this.$store.commit('setPressedButton', event.key)
-
-        //   return
-        // }
-
         this.debouncer.start = Date.now()
 
         this.$store.commit('setPressedButton', event.key.toLowerCase() )
@@ -44,7 +34,7 @@ export default {
       }
     },
     stopPressing(){
-      this.$store.commit('setPressedButton', '')
+      this.$store.commit('unsetPressedButton', '')
     },
     getDebouncerTimeLeft() {
       let elapsed = Date.now() - this.debouncer.start
