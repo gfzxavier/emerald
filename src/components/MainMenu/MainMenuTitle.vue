@@ -2,9 +2,9 @@
   <div class="main-menu-title">
     <img src="../../assets/img/logo.png" class="main-menu-title__logo">
 
-    <main-menu-options />
+    <MainMenuOptions />
 
-    <soundtrack song="main-menu" />
+    <Soundtrack song="main-menu" />
   </div>
 </template>
 
