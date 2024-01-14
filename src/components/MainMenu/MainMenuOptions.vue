@@ -10,7 +10,7 @@
 <script>
 import Cursor from '../UI/Cursor.vue'
 export default {
-  name: 'MainMenuTitle',
+  name: 'MainMenuOptions',
   components: {
     Cursor
   },
@@ -38,21 +38,19 @@ export default {
   },
   watch:{
     '$store.getters.getPressedButton': function(command) {
+      const previousItem = this.options[this.currentActiveItemIndex - 1]
+      const currentItem = this.options[this.currentActiveItemIndex]
+      const nextItem = this.options[this.currentActiveItemIndex + 1]
 
       if(command == 'arrowdown') {
         if(this.currentActiveItemIndex < this.options.length - 1){
-          this.options[this.currentActiveItemIndex].active = false
-          this.options[this.currentActiveItemIndex + 1].active = true
+          currentItem.active = false
+          nextItem.active = true
         }
       } else if (command == 'arrowup') {
         if(this.currentActiveItemIndex != 0){
-          this.options[this.currentActiveItemIndex].active = false
-          this.options[this.currentActiveItemIndex - 1].active = true
-        }
-      } else if (command == 'enter') {
-        switch(this.currentActiveItem.text) {
-          case 'Novo Jogo':
-            this.$router.push('/LevelOne')
+          currentItem.active = false
+          previousItem.active = true
         }
       }
     }
@@ -83,7 +81,7 @@ export default {
   }
   &__cursor {
     height: 50px;
-    transform: rotate(45deg);
+    transform: translate(10px, 10px);
     animation: moving-cursor 1s ease-in-out infinite;
   }
 }
