@@ -22,7 +22,7 @@ export default {
 }
 .cursor {
   height: 50px;
-  transform: rotate(45deg);
+  transform: translate(10px, 10px);
   animation: moving-cursor 1s ease-in-out infinite;
 }
 </style>
