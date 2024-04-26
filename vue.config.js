@@ -3,7 +3,8 @@ module.exports = defineConfig({
   transpileDependencies: true,
     pluginOptions:{
       electronBuilder: {
-        customFileProtocol: './'
+        customFileProtocol: './',
+        preload: 'src/preload.js'
       }
   }
 })
