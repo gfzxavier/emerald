@@ -1,14 +1,14 @@
 <template>
   <div class="soundtrack">
     <audio autoplay>
-      <source :src="songUrl" type="audio/mpeg">
+      <source :src="songUrl" type="audio/mpeg" />
     </audio>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'soundtrack',
+  name: 'Soundtrack',
   props: {
     song: {
       type: String,
@@ -16,13 +16,11 @@ export default {
     }
   },
   computed: {
-    songUrl(){
+    songUrl() {
       return `local-audio://sound/${this.song}.mp3`
     }
-  },
+  }
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

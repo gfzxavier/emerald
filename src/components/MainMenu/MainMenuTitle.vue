@@ -1,27 +1,27 @@
 <template>
   <div class="main-menu-title">
-    <img src="../../assets/img/logo.png" class="main-menu-title__logo">
+    <img src="../../assets/img/logo.png" class="main-menu-title__logo" />
 
     <MainMenuOptions />
 
-    <Soundtrack song="main-menu" />
+    <!-- <Soundtrack song="main-menu" /> -->
   </div>
 </template>
 
 <script>
 import MainMenuOptions from './MainMenuOptions.vue'
-import Soundtrack from '../UI/Soundtrack.vue'
+// import Soundtrack from '../UI/Soundtrack.vue'
 export default {
   name: 'MainMenuTitle',
   components: {
-    MainMenuOptions,
-    Soundtrack
+    MainMenuOptions
+    // Soundtrack
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.main-menu-title{
+.main-menu-title {
   position: absolute;
   right: 60px;
   top: 50px;

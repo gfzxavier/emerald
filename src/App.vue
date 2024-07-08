@@ -1,31 +1,22 @@
 <template>
   <router-view />
-  <command-overlay></command-overlay>
+  <Config />
 </template>
 
 <script>
-
-import CommandOverlay from './components/config/CommandOverlay.vue'
+import Config from './components/Config'
 
 export default {
   name: 'App',
   components: {
-    CommandOverlay
+    Config
   }
 }
 </script>
 
 <style>
-html, body {
+html,
+body {
   margin: 0;
-}
-.overlay{
-  background: transparent;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  /* outline: none; */
 }
 </style>

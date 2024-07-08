@@ -87,7 +87,9 @@ app.on('ready', async () => {
     }
   }
 
-  ipcMain.handle('close-app', () => app.exit())
+  ipcMain.handle('close-app', () => {
+    app.exit()
+  })
 
   createWindow()
 })

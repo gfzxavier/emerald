@@ -1,40 +1,39 @@
 <template>
   <div class="player">
     <knight :action="command"></knight>
-    <!-- <knight :action="'stand'"></knight>
-    <knight :action="'running'"></knight>
-    <knight :action="'attacking'"></knight> -->
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import knight from './characters/Knight.vue'
 export default {
   name: 'player1',
-  components:{
+  components: {
     knight
   },
-  data(){
-    return {
-    }
+  data() {
+    return {}
   },
   computed: {
+    ...mapGetters('Config', ['pressedButtons']),
     command() {
-      if(this.$store.getters.getPressedButton == 'arrowright') {
+      if (this.pressedButtons == 'arrowright') {
         return 'running'
       }
-      if(this.$store.getters.getPressedButton == 'z') {
+      if (this.pressedButtons == 'z') {
         return 'attacking'
       }
       return 'stand'
-    },
+    }
   }
 }
 </script>
 
 <style lang="scss">
-  .player {
-    position: absolute;
-    display: flex;
-  }
+.player {
+  position: absolute;
+  display: flex;
+}
 </style>

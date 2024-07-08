@@ -1,14 +1,32 @@
 <template>
   <div class="knight">
-    <div v-if="action === 'stand'" class="knight__block knight__block--stand">
-      <img src="../../assets/img/Characters/knight/_Idle.png" class="knight__stand">
+    <div :class="['knight__block', oclusionClass]">
+      <img :src="spriteSheetPath" :class="imageClass" />
     </div>
-    <div v-if="action === 'running'" class="knight__block knight__block--running">
-      <img src="../../assets/img/Characters/knight/_Run.png" class="knight__running">
+    <!-- <div v-if="action === 'stand'" class="knight__block knight__block--stand">
+      <img
+        src="../../assets/img/Characters/knight/stand.png"
+        class="knight__stand"
+      />
     </div>
-    <div v-if="action === 'attacking'" class="knight__block knight__block--attacking">
-      <img src="../../assets/img/Characters/knight/_Attack.png" class="knight__attacking">
+    <div
+      v-if="action === 'running'"
+      class="knight__block knight__block--running"
+    >
+      <img
+        src="../../assets/img/Characters/knight/running.png"
+        class="knight__running"
+      />
     </div>
+    <div
+      v-if="action === 'attacking'"
+      class="knight__block knight__block--attacking"
+    >
+      <img
+        src="../../assets/img/Characters/knight/attacking.png"
+        class="knight__attacking"
+      />
+    </div> -->
   </div>
 </template>
 
@@ -20,29 +38,35 @@ export default {
       type: String,
       default: 'stand'
     }
+  },
+  computed: {
+    spriteSheetPath() {
+      return require(`../../assets/img/Characters/knight/${this.action}.png`)
+    },
+    imageClass() {
+      return `knight__${this.action}`
+    },
+    oclusionClass() {
+      return `knight__block--${this.action}`
+    }
   }
 }
 </script>
 
 <style lang="scss">
-
 @keyframes animate {
   from {
-    transform: translate3d(0px,0,0);
+    transform: translate3d(0px, 0, 0);
   }
   to {
-    transform: translate3d(-100%,0,0);
+    transform: translate3d(-100%, 0, 0);
   }
 }
 
-.knight{
-
+.knight {
   $character-size: 500px;
 
-  // background-color: blue;
-
   &__block {
-
     height: 268px;
 
     &--stand {
@@ -61,7 +85,7 @@ export default {
     }
 
     &--running {
-      border:2px solid yellow;
+      border: 2px solid yellow;
       width: 168px;
       overflow: hidden;
 
@@ -69,14 +93,14 @@ export default {
         position: relative;
         top: -232px;
         left: -275px;
-        animation: animate .55s steps(10) infinite;
+        animation: animate 0.55s steps(10) infinite;
         height: $character-size;
         image-rendering: pixelated;
       }
     }
 
     &--attacking {
-      border:2px solid purple;
+      border: 2px solid purple;
       width: 438px;
       overflow: hidden;
 
@@ -84,7 +108,7 @@ export default {
         position: relative;
         top: -232px;
         left: -300px;
-        animation: animate .18s steps(4) infinite;
+        animation: animate 0.18s steps(4) infinite;
         height: $character-size;
         image-rendering: pixelated;
       }
